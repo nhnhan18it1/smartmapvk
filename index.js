@@ -17,6 +17,7 @@ io.on('connection',(socket)=>{
     socket.on('send_position',(data)=>{
         console.log(data);
         remote.forEach(element => {
+            if (element==socket)continue
             element.emit("sv_send_position",data)
         });
     })
@@ -31,6 +32,6 @@ io.on('connection',(socket)=>{
         
     })
     socket.on("disconnect",()=>{
-        remote.remote(socket)
+        remote.remove(socket)
     })
 })
