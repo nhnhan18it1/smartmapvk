@@ -17,7 +17,7 @@ io.on('connection',(socket)=>{
     socket.on('send_position',(data)=>{
         console.log(data);
         remote.forEach(element => {
-            if (element==socket)continue
+            if(element==socket){return true}
             element.emit("sv_send_position",data)
         });
     })
