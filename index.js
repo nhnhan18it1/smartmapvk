@@ -15,6 +15,7 @@ io.on('connection',(socket)=>{
     console.log("connected: "+socket.id);
     remote.push(socket)
     socket.on('send_position',(data)=>{
+        console.log(data);
         remote.forEach(element => {
             element.emit("sv_send_position",data)
         });
